@@ -5,29 +5,70 @@ let assert = require('assert')
 // Write a function called isOdd that returns whether or not a number is odd.
 // If something that is not a number is passed in, return false.
 
-
 // Uncomment out the next line to test your solution
-// runQ1Tests()
+//runQ1Tests()
 
 
 // Question Two:
 
 // Write a function called numberOfDigits that returns how many digits are in a given number
-
+function numberOfDigits(num){
+  let string = num.toString();
+  charArray = string.split("");
+  digitCount = 0;
+  for (i = 0; i < charArray.length; i++){
+    digitCount ++;
+  }
+  return digitCount;
+}
+console.log(numberOfDigits(32));
 // Uncomment out the next line to test your solution
-// runQ2Tests()
+runQ2Tests()
 
 // Question Three:
 
 // Write a function called disemvowel that removes all of the vowels from a string.
 // Treat y as a consonant, not a vowel
-
+// function disemvowel(string){
+//   let charArray = string.split("")
+//   var string2;
+//   for (i = 0; i < charArray.length; i ++){
+//     if (charArray[i] === 'a' ||
+//         charArray[i] === 'e' ||
+//         charArray[i] === 'i' ||
+//         charArray[i] === 'o' ||
+//         charArray[i] === 'u' ){
+//         string2 = charArray.pop(charArray[i])
+//         }
+//   }
+//   return(string2)
+// }
+// console.log(disemvowel('can'));
 // Uncomment out the next line to test your solution
 // runQ3Tests()
 
 // Question Four:
 // Write a function called secondSmallest that returns the second smallest number in an array
+// let array = [-1,1,2,3,4,5,6];
+// function secondSmallest(array){
+//   let currentNumber = 0
+//   let smallesttNumber = 0;
+//   let secondSmallestNum = 0 ;
+//   for( let i = 0; i <array.length; i++){
+//     currentNumber = array[i] 
+//     if(currentNumber < smallesttNumber){
+//       smallesttNumber = currentNumber;
+//     } else if (smallesttNumber < smallesttNumber){
+//       secondSmallest = smallesttNumber;
+//       currentNumber = smallesttNumber;
+//     }
+//   }
+//   console.log(smallesttNumber);
+//   console.log(secondSmallestNum);
+  
 
+// }
+// secondSmallest(array)
 // Uncomment out the next line to test your solution
 // runQ4Tests()
 
@@ -35,6 +76,17 @@ let assert = require('assert')
 // Write a function called getLocations that takes in an array of objects that look like the array below,
 // and returns an array of the strings corresponding to the value of the location property
 // The output should be in the same order as the input
+let places = [{location: "Algeria", population: 41}, {location: "Belize", population: 0.4}, {location: "China", population: 1386}, {location: "Denmark", population: 6}];
+function getLocations(object){
+  let results = []
+
+  for(let property in object){
+    results.push(object[property].location);
+  }
+  return results;
+
+}
+getLocations(places);
 
 // Sample input:
 // [{location: "Algeria", population: 41}, {location: "Belize", population: 0.4}, {location: "China", population: 1386}, {location: "Denmark", population: 6}]
@@ -43,7 +95,7 @@ let assert = require('assert')
 // ["Algeria", "Belize", "China", "Denmark"]
 
 // Uncomment out the next line to test your solution
-// runQ5Tests()
+ runQ5Tests()
 
 
 // Question Six:
@@ -62,6 +114,23 @@ let assert = require('assert')
 // Give it two properties set by the constructor named temperature and weather
 // Give it a method named getDescription that returns a string in the format described below
 
+class Day {
+  constructor(temperature, weather) {
+    this.temperature = temperature
+    this.weather = weather
+  }
+  getDescription(){
+    return `It is ${this.temperature} degrees and ${this.weather}`;
+  }
+  getAllDayDescriptions(objArray){
+    return objArray.every(Day.getDescription);
+  }
+}
+let monday = new Day(80,'Sunny');
+let tuesday = new Day(70,'cloudy');
+let array7 = [monday,tuesday]
+//let alldays = new Day;
+//alldays.getAllDayDescriptions(array7);
 // Example
 // let myDay = Day(80, "sunny")
 // myDay.getDescription() // returns "It is 80 degrees and sunny"
